@@ -22,7 +22,7 @@
     <div id="karty">
         <div class="inline" ng-repeat="(y,x) in [].constructor(number) track by $index">
 
-            <img data-toggle="dropdown" fade="0" set-card="pole" ng-attr-id="{{ $index }}" class="pointer" width="75"
+            <img data-toggle="dropdown" fade="0" set-card="pole" ng-attr-id="{{ $index }}" class="pointer pole" width="75"
                 src="images/pole.jpg">
             <div class="dropdown-menu" style="max-width:222px ;">
                 <img class="pointer" ng-click="changeCard(y,x)" width="55" ng-src="{{ 'images/' + x + '.jpg' }}"
@@ -30,6 +30,7 @@
             </div>
 
         </div>
+        <button ng-click="restart()">restart</button>
     </div>
 
 

@@ -27,10 +27,18 @@ app.controller('myCtrl', function ($scope) {
                 }, 125);
             }
         }
-
- 
-};
+    }
+    $scope.restart = function () {
+        let resetCard = "pole";
+        $(".pole").each(function(){
+            let card = $(this).attr("set-card");
+            if ( card !== resetCard) {
+                console.log("lol");
+            }
+        });
+    }
     
+
 });
 
 
