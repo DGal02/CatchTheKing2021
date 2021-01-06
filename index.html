@@ -19,7 +19,7 @@
 <body ng-app="myApp" ng-controller="myCtrl">
 
 
-    <div id="karty">
+    <div id="karty" class="tcenter ocenter">
         <div class="inline" ng-repeat="(y,x) in [].constructor(number) track by $index">
 
             <img data-toggle="dropdown" fade="0" set-card="pole" ng-attr-id="{{ $index }}" class="pointer pole" width="75"
@@ -30,7 +30,7 @@
             </div>
 
         </div>
-        <button ng-click="restart()">restart</button>
+        <button type="button" class="btn btn-success mt-3" ng-click="restart()">restart</button>
     </div>
 
 

@@ -82,3 +82,13 @@ html, body {
 .pointer{
     cursor: pointer;
 }
+.tcenter{
+  text-align: center;
+}
+.ocenter{
+  margin:0 auto;
+}
+.icenter{
+  margin: 0 auto;
+  display:block;
+}
