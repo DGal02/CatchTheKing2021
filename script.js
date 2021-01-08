@@ -62,10 +62,7 @@ app.controller('myCtrl', function ($scope) {
         });
     }
 
-
-});
-
-var hoverElementID = "-1";
+    var hoverElementID = "-1";
 $(document).ready(function () {
     $(".pole").mouseenter(function () {
         hoverElementID = $(this).attr("id");
@@ -125,6 +122,10 @@ function animate(card) {
 
 
 };
+
+});
+
+
 
 
 
