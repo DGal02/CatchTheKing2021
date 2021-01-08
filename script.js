@@ -63,65 +63,71 @@ app.controller('myCtrl', function ($scope) {
     }
 
     var hoverElementID = "-1";
-$(document).ready(function () {
-    $(".pole").mouseenter(function () {
-        hoverElementID = $(this).attr("id");
+    $(document).ready(function () {
+        $(".pole").mouseenter(function () {
+            hoverElementID = $(this).attr("id");
+        });
+        $(".pole").mouseleave(function () {
+            hoverElementID = "-1";
+        });
     });
-    $(".pole").mouseleave(function () {
-        hoverElementID = "-1";
-    });
-});
 
-document.onkeyup = function (e) {
-    if (e.which == 49) {
-        animate("1");
-    } else if (e.which == 50) {
-        animate("2");
-    } else if (e.which == 51) {
-        animate("3");
-    } else if (e.which == 52) {
-        animate("4");
-    } else if (e.which == 53) {
-        animate("5");
-    } else if (e.which == 54) {
-        animate("uwaga");
-    } else if (e.which == 55) {
-        animate("krol");
-    } else if (e.which == 56) {
-        animate("pole");
-    }
-};
-function animate(card) {
-
-    if (hoverElementID !== "-1" && $("#" + hoverElementID).attr("set-card") !== card) {
-        let this1 = "#" + hoverElementID;
-        if ($(this1).attr("fade") === "0") {
-
-            $(this1).removeClass("fade0");
-            $(this1).addClass("fade1");
-            $(this1).attr("set-card", card);
-            setTimeout(function () {
-                $(this1).attr("src", 'images/' + card + ".jpg");
-                $(this1).attr("fade", "1");
-
-            }, 125);
+    document.onkeyup = function (e) {
+        if (e.key === "1") {
+            animate("1");
+        } else if (e.key === "2") {
+            animate("2");
+        } else if (e.key == "3") {
+            animate("3");
+        } else if (e.key == "4") {
+            animate("4");
+        } else if (e.key == "5") {
+            animate("5");
+        } else if (e.key == "6") {
+            animate("uwaga");
+        } else if (e.key == "7") {
+            animate("krol");
+        } else if (e.key == "8") {
+            animate("pole");
         }
-        else {
-
-            $(this1).removeClass("fade1");
-            $(this1).addClass("fade0");
-            $(this1).attr("set-card", card);
-            setTimeout(function () {
-                $(this1).attr("src", 'images/' + card + ".jpg");
-                $(this1).attr("fade", "0");
-
-
-            }, 125);
+        else if (e.key === "r") {
+            $scope.changeAll("pole");
         }
-    }
+        else if (e.key === "t") {
+            $scope.changeAll("uwaga");
+        }
+    };
+    function animate(card) {
+
+        if (hoverElementID !== "-1" && $("#" + hoverElementID).attr("set-card") !== card) {
+            let this1 = "#" + hoverElementID;
+            if ($(this1).attr("fade") === "0") {
+
+                $(this1).removeClass("fade0");
+                $(this1).addClass("fade1");
+                $(this1).attr("set-card", card);
+                setTimeout(function () {
+                    $(this1).attr("src", 'images/' + card + ".jpg");
+                    $(this1).attr("fade", "1");
+
+                }, 125);
+            }
+            else {
+
+                $(this1).removeClass("fade1");
+                $(this1).addClass("fade0");
+                $(this1).attr("set-card", card);
+                setTimeout(function () {
+                    $(this1).attr("src", 'images/' + card + ".jpg");
+                    $(this1).attr("fade", "0");
 
 
-};
+                }, 125);
+            }
+        }
+
+
+    };
 
 });
 
