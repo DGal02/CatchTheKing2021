@@ -31,11 +31,11 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.changeAll = function (card) {
         let resetCard = card;
-        $(".pole").each(function(){
+        $(".pole").each(function () {
             let card = $(this).attr("set-card");
             let cardID = $(this).attr("id");
-            if ( card !== resetCard) {
-                if ($(this).attr("fade")==="0" ) {
+            if (card !== resetCard) {
+                if ($(this).attr("fade") === "0") {
 
                     $(this).removeClass("fade0");
                     $(this).addClass("fade1");
@@ -43,28 +43,88 @@ app.controller('myCtrl', function ($scope) {
                     setTimeout(function () {
                         $("#" + cardID).attr("src", 'images/' + resetCard + ".jpg");
                         $("#" + cardID).attr("fade", "1");
-    
+
                     }, 125);
                 }
                 else {
-                    
+
                     $(this).removeClass("fade1");
                     $(this).addClass("fade0");
                     $(this).attr("set-card", resetCard);
                     setTimeout(function () {
                         $("#" + cardID).attr("src", 'images/' + resetCard + ".jpg");
                         $("#" + cardID).attr("fade", "0");
-                        
-    
+
+
                     }, 125);
                 }
             }
         });
     }
-    
+
 
 });
 
+var hoverElementID = "-1";
+$(document).ready(function () {
+    $(".pole").mouseenter(function () {
+        hoverElementID = $(this).attr("id");
+    });
+    $(".pole").mouseleave(function () {
+        hoverElementID = "-1";
+    });
+});
+
+document.onkeyup = function (e) {
+    if (e.which == 49) {
+        animate("1");
+    } else if (e.which == 50) {
+        animate("2");
+    } else if (e.which == 51) {
+        animate("3");
+    } else if (e.which == 52) {
+        animate("4");
+    } else if (e.which == 53) {
+        animate("5");
+    } else if (e.which == 54) {
+        animate("uwaga");
+    } else if (e.which == 55) {
+        animate("krol");
+    } else if (e.which == 56) {
+        animate("pole");
+    }
+};
+function animate(card) {
+
+    if (hoverElementID !== "-1" && $("#" + hoverElementID).attr("set-card") !== card) {
+        let this1 = "#" + hoverElementID;
+        if ($(this1).attr("fade") === "0") {
+
+            $(this1).removeClass("fade0");
+            $(this1).addClass("fade1");
+            $(this1).attr("set-card", card);
+            setTimeout(function () {
+                $(this1).attr("src", 'images/' + card + ".jpg");
+                $(this1).attr("fade", "1");
+
+            }, 125);
+        }
+        else {
+
+            $(this1).removeClass("fade1");
+            $(this1).addClass("fade0");
+            $(this1).attr("set-card", card);
+            setTimeout(function () {
+                $(this1).attr("src", 'images/' + card + ".jpg");
+                $(this1).attr("fade", "0");
+
+
+            }, 125);
+        }
+    }
+
+
+};
 
 
 
