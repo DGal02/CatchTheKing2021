@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="Shortcut icon" href="images/ikona.png">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -33,8 +34,26 @@
         <button type="button" class="btn btn-success mt-3" ng-click="changeAll('pole')">Restart</button>
         <div></div>
         <button type="button" class="btn btn-success mt-3" ng-click="changeAll('uwaga')">Taktyka</button>
+        <div></div>
+        <i style="font-size:24px; color:white;" class="fa mt-3 pointer" data-toggle="modal" data-target="#exampleModalCenter">&#xf05a;</i>
     </div>
-
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Instrukcja</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+            </div>
+          </div>
+        </div>
 
 
 
