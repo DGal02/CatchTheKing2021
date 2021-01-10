@@ -5,14 +5,16 @@ app.controller('myCtrl', function ($scope) {
     $scope.cards = ["1", "2", "3", "4", "5", "uwaga", "krol", "pole"];
     $scope.changeCard = function (id, card) {
         $scope.animate(card, id);
-    }
+    };
+
     $scope.changeAll = function (card) {
         let resetCard = card;
         $(".pole").each(function () {
             let cardID = $(this).attr("id");
             $scope.animate (resetCard, cardID);
         });
-    }
+    };
+
     var hoverElementID = "-1";
     $(document).ready(function () {
         $(".pole").mouseenter(function () {
@@ -22,6 +24,7 @@ app.controller('myCtrl', function ($scope) {
             hoverElementID = "-1";
         });
     });
+
     document.onkeyup = function (e) {
         if (e.key === "1") {
             $scope.animate("1", hoverElementID);
@@ -47,6 +50,7 @@ app.controller('myCtrl', function ($scope) {
             $scope.changeAll("uwaga");
         }
     };
+
   $scope.animate = function (card, id) {
         if (id !== "-1" && $("#" + id).attr("set-card") !== card) {
             let this1 = "#" + id;
@@ -72,6 +76,7 @@ app.controller('myCtrl', function ($scope) {
             }
         }
     };
+
 });
 
 
