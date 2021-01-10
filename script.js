@@ -4,64 +4,15 @@ app.controller('myCtrl', function ($scope) {
     $scope.number = 25;
     $scope.cards = ["1", "2", "3", "4", "5", "uwaga", "krol", "pole"];
     $scope.changeCard = function (id, card) {
-        let setCard = $("#" + id).attr("set-card");
-        if (card !== setCard) {
-            if ($("#" + id).attr("fade") === "0") {
-                $("#" + id).removeClass("fade0");
-                $("#" + id).addClass("fade1");
-                $("#" + id).attr("set-card", card);
-                setTimeout(function () {
-                    $("#" + id).attr("src", 'images/' + card + ".jpg");
-                    $("#" + id).attr("fade", "1");
-
-                }, 125);
-            }
-            else {
-                $("#" + id).removeClass("fade1");
-                $("#" + id).addClass("fade0");
-                $("#" + id).attr("set-card", card);
-                setTimeout(function () {
-                    $("#" + id).attr("src", 'images/' + card + ".jpg");
-                    $("#" + id).attr("fade", "0");
-
-                }, 125);
-            }
-        }
+        $scope.animate(card, id);
     }
-
     $scope.changeAll = function (card) {
         let resetCard = card;
         $(".pole").each(function () {
-            let card = $(this).attr("set-card");
             let cardID = $(this).attr("id");
-            if (card !== resetCard) {
-                if ($(this).attr("fade") === "0") {
-
-                    $(this).removeClass("fade0");
-                    $(this).addClass("fade1");
-                    $(this).attr("set-card", resetCard);
-                    setTimeout(function () {
-                        $("#" + cardID).attr("src", 'images/' + resetCard + ".jpg");
-                        $("#" + cardID).attr("fade", "1");
-
-                    }, 125);
-                }
-                else {
-
-                    $(this).removeClass("fade1");
-                    $(this).addClass("fade0");
-                    $(this).attr("set-card", resetCard);
-                    setTimeout(function () {
-                        $("#" + cardID).attr("src", 'images/' + resetCard + ".jpg");
-                        $("#" + cardID).attr("fade", "0");
-
-
-                    }, 125);
-                }
-            }
+            $scope.animate (resetCard, cardID);
         });
     }
-
     var hoverElementID = "-1";
     $(document).ready(function () {
         $(".pole").mouseenter(function () {
@@ -71,24 +22,23 @@ app.controller('myCtrl', function ($scope) {
             hoverElementID = "-1";
         });
     });
-
     document.onkeyup = function (e) {
         if (e.key === "1") {
-            animate("1");
+            $scope.animate("1", hoverElementID);
         } else if (e.key === "2") {
-            animate("2");
+            $scope.animate("2", hoverElementID);
         } else if (e.key == "3") {
-            animate("3");
+            $scope.animate("3", hoverElementID);
         } else if (e.key == "4") {
-            animate("4");
+            $scope.animate("4", hoverElementID);
         } else if (e.key == "5") {
-            animate("5");
+            $scope.animate("5", hoverElementID);
         } else if (e.key == "6") {
-            animate("uwaga");
+            $scope.animate("uwaga", hoverElementID);
         } else if (e.key == "7") {
-            animate("krol");
+            $scope.animate("krol", hoverElementID);
         } else if (e.key == "8") {
-            animate("pole");
+            $scope.animate("pole", hoverElementID);
         }
         else if (e.key === "r") {
             $scope.changeAll("pole");
@@ -97,10 +47,9 @@ app.controller('myCtrl', function ($scope) {
             $scope.changeAll("uwaga");
         }
     };
-    function animate(card) {
-
-        if (hoverElementID !== "-1" && $("#" + hoverElementID).attr("set-card") !== card) {
-            let this1 = "#" + hoverElementID;
+  $scope.animate = function (card, id) {
+        if (id !== "-1" && $("#" + id).attr("set-card") !== card) {
+            let this1 = "#" + id;
             if ($(this1).attr("fade") === "0") {
 
                 $(this1).removeClass("fade0");
@@ -113,22 +62,16 @@ app.controller('myCtrl', function ($scope) {
                 }, 125);
             }
             else {
-
                 $(this1).removeClass("fade1");
                 $(this1).addClass("fade0");
                 $(this1).attr("set-card", card);
                 setTimeout(function () {
                     $(this1).attr("src", 'images/' + card + ".jpg");
                     $(this1).attr("fade", "0");
-
-
                 }, 125);
             }
         }
-
-
     };
-
 });
 
 
