@@ -3,10 +3,6 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.number = 25;
     $scope.cards = ["1", "2", "3", "4", "5", "uwaga", "krol", "pole"];
-    $scope.changeCard = function (id, card) {
-        $scope.animate(card, id);
-    };
-
     $scope.changeAll = function (card) {
         let resetCard = card;
         $(".pole").each(function () {
